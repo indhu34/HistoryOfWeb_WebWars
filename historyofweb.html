@@ -1,0 +1,706 @@
+<html>
+
+<head>
+    <title>Web</title>
+    <style>
+        .words {
+            color: #f4d03f;
+            font-size: 0;
+
+            line-height: 1.5;
+        }
+
+        .words span {
+            font-size: 5rem;
+            display: inline-block;
+            animation: move 3s ease-in-out infinite;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translate(-30%, 0);
+            }
+
+            50% {
+                text-shadow: 0 25px 50px rgba(0, 0, 0, 0.75);
+            }
+
+            100% {
+                transform: translate(30%, 0);
+            }
+        }
+
+        .words span:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .words span:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .words span:nth-child(4) {
+            animation-delay: 1.5s;
+        }
+
+        .words span:nth-child(5) {
+            animation-delay: 2s;
+        }
+
+        .words span:nth-child(6) {
+            animation-delay: 2.5s;
+        }
+
+        .words span:nth-child(7) {
+            animation-delay: 3s;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: "Roboto";
+            font-size: 17px;
+            font-weight: 400;
+            background-color: #eee;
+        }
+
+        h1 {
+            font-size: 200%;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 400;
+        }
+
+        header {
+            background: #f4d03f;
+            color: #ffffff;
+            padding: 150px 0;
+        }
+
+        header p {
+            font-family: "Allura";
+            color: rgba(255, 255, 255, 0.2);
+            margin-bottom: 0;
+            font-size: 60px;
+            margin-top: -30px;
+        }
+
+        .timeline {
+            position: relative;
+        }
+
+        .timeline::before {
+            content: "";
+            background: #c5cae9;
+            width: 5px;
+            height: 95%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            width: 100%;
+            margin-bottom: 70px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            float: right;
+            padding: 40px 30px 10px 30px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content .date {
+            right: auto;
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: "";
+            position: absolute;
+            border-style: solid;
+            width: 0;
+            height: 0;
+            top: 30px;
+            left: -15px;
+            border-width: 10px 15px 10px 0;
+            border-color: transparent #f5f5f5 transparent transparent;
+        }
+
+        .timeline-item::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .timeline-content {
+            position: relative;
+            width: 45%;
+            padding: 10px 30px;
+            border-radius: 4px;
+            background: #f5f5f5;
+            box-shadow: 0 20px 25px -15px rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline-content::after {
+            content: "";
+            position: absolute;
+            border-style: solid;
+            width: 0;
+            height: 0;
+            top: 30px;
+            right: -15px;
+            border-width: 10px 0 10px 15px;
+            border-color: transparent transparent transparent #f5f5f5;
+        }
+
+        .timeline-img {
+            width: 30px;
+            height: 30px;
+            background: #3f51b5;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            margin-top: 25px;
+            margin-left: -15px;
+        }
+
+        a {
+            background: #3f51b5;
+            color: #ffffff;
+            padding: 8px 20px;
+            text-transform: uppercase;
+            font-size: 14px;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            display: inline-block;
+            border-radius: 2px;
+            box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.6);
+        }
+
+        a:hover,
+        a:active,
+        a:focus {
+            background: #32408f;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .timeline-card {
+            padding: 0 !important;
+        }
+
+        .timeline-card p {
+            padding: 0 20px;
+        }
+
+        .timeline-card a {
+            margin-left: 20px;
+        }
+
+        .timeline-item .timeline-img-header {
+            background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)), url("https://picsum.photos/1000/800/?random") center center no-repeat;
+            background-size: cover;
+        }
+
+        .timeline-img-header {
+            height: 200px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .timeline-img-header h2 {
+            color: #ffffff;
+            position: absolute;
+            bottom: 5px;
+            left: 20px;
+        }
+
+        blockquote {
+            margin-top: 30px;
+            color: #757575;
+            border-left-color: #3f51b5;
+            padding: 0 20px;
+        }
+
+        .date {
+            background: #ff4081;
+            display: inline-block;
+            color: #ffffff;
+            padding: 10px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+
+        @media screen and (max-width: 768px) {
+            .timeline::before {
+                left: 50px;
+            }
+
+            .timeline .timeline-img {
+                left: 50px;
+            }
+
+            .timeline .timeline-content {
+                max-width: 100%;
+                width: auto;
+                margin-left: 70px;
+            }
+
+            .timeline .timeline-item:nth-child(even) .timeline-content {
+                float: none;
+            }
+
+            .timeline .timeline-item:nth-child(odd) .timeline-content::after {
+                content: "";
+                position: absolute;
+                border-style: solid;
+                width: 0;
+                height: 0;
+                top: 30px;
+                left: -15px;
+                border-width: 10px 15px 10px 0;
+                border-color: transparent #f5f5f5 transparent transparent;
+            }
+        }
+
+        .modal-trigger {
+            text-decoration: none;
+            padding: 1rem;
+            background: #f93434;
+            display: inline-block;
+            border-radius: 3px;
+            margin-top: 10px;
+            color: #fff;
+        }
+
+        .modal {
+            display: none;
+            background: rgba(0, 0, 0, .8);
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        .modal:target {
+            display: table;
+        }
+
+        .modal__dialog {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .modal__content {
+            background: rgb(255, 255, 255);
+            width: 60%;
+            min-width: 300px;
+            margin: auto;
+            position: relative;
+
+            animation: slideUp 0.3s ease-in-out;
+        }
+
+        .modal__header {
+            background: #2980b9;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 1rem;
+            position: relative;
+        }
+
+        .modal__title {
+            margin: 0;
+        }
+
+        .modal__close {
+            color: #fff;
+            text-decoration: none;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+
+        .modal__image {
+            display: block;
+            margin: 1rem auto;
+        }
+
+        .modal__text {
+            padding: 0 1rem;
+            line-height: 1.5;
+        }
+
+        .modal__footer {
+            padding: 1rem;
+            border-top: 1px solid #ccc;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                bottom: -200px;
+            }
+
+            to {
+                opacity: 1;
+                bottom: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="words word-1">
+            <span>H</span>
+            <span>I</span>
+            <span>S</span>
+            <span>T</span>
+            <span>O</span>
+            <span>R</span>
+            <span>Y</span>
+            &span;&span;&span;&span;&span;&span;
+
+            <span>O</span>
+            <span>F</span>
+            &span;&span;&span;&span;&span;&span;
+
+            <span>W</span>
+            <span>E</span>
+            <span>B</span>
+        </div>
+
+
+        </div>
+    </header>
+
+    <section class="timeline">
+
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-img"></div>
+
+            <div class="timeline-content timeline-card js--fadeInLeft">
+                <div class="timeline-img-header">
+                    <h2>The OG Meme LordRichard Dawkin</h2>
+                </div>
+                <div class="date">1976</div>
+                <p></p>
+                <a href="#modal" class="modal-trigger">More</a>
+
+                <div class="modal" id="modal">
+                    <div class="modal__dialog">
+                        <section class="modal__content">
+                            <header class="modal__header">
+                                <h2 class="modal__title">Idea of Global Network</h2>
+                                <a href="#" class="modal__close">&times;</a>
+                            </header>
+                            <div class="modal__body">
+                                <img src="https://www.internethalloffame.org/sites/default/files/inductees/jcr%20licklider.jpg"
+                                    alt="modal image" class="modal__image">
+                                <p class="modal__text">The OG Meme LordRichard Dawkins, author of The Selfish Gene, coined the term "meme" back in 1976 and intended for it to be used in terms of evolutionary biology. But then the internet came along and adopted the phrase.
+                                    In a 2013 interview, Dawkins said "the internet is a first class ecology for memes to spread, and it's no wonder that the world 'meme' has taken up in the internet, because that's exactly what it is."
+                                </p>
+                            </div>
+                            <footer class="modal__footer">
+                                <a href="https://www.thrillist.com/entertainment/nation/first-meme-ever"
+                                    class="modal__link">follow me</a>
+                            </footer>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-img"></div>
+
+            <div class="timeline-content timeline-card js--fadeInLeft">
+                <div class="timeline-img-header">
+                    <h2>Jon Postel</h2>
+                </div>
+                <div class="date">1986</div>
+                <p></p>
+                <a href="#modal" class="modal-trigger">More</a>
+
+                <div class="modal" id="modal">
+                    <div class="modal__dialog">
+                        <section class="modal__content">
+                            <header class="modal__header">
+                                <h2 class="modal__title">Idea of Global Network</h2>
+                                <a href="#" class="modal__close">&times;</a>
+                            </header>
+                            <div class="modal__body">
+                                <img src="https://www.internethalloffame.org/sites/default/files/inductees/jcr%20licklider.jpg"
+                                    alt="modal image" class="modal__image">
+                                <p class="modal__text"> 
+                                    Postel was a computer scientist who led the domain name system (DNS) and was referred to as the "God of the Internet" for his immense know-how and influence. 
+                                </p>
+                            </div>
+                            <footer class="modal__footer">
+                                <a href="https://www.internethalloffame.org//inductees/jcr-licklider"
+                                    class="modal__link">follow me</a>
+                            </footer>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-img"></div>
+
+            <div class="timeline-content timeline-card js--fadeInLeft">
+                <div class="timeline-img-header">
+                    <h2> Tim Berners-Lee's </h2>
+                </div>
+                <div class="date">1991</div>
+                <p></p>
+                <a href="#modal" class="modal-trigger">More</a>
+
+                <div class="modal" id="modal">
+                    <div class="modal__dialog">
+                        <section class="modal__content">
+                            <header class="modal__header">
+                                <h2 class="modal__title">Idea of Global Network</h2>
+                                <a href="#" class="modal__close">&times;</a>
+                            </header>
+                            <div class="modal__body">
+                                <img src="https://www.internethalloffame.org/sites/default/files/inductees/jcr%20licklider.jpg"
+                                    alt="modal image" class="modal__image">
+                                <p class="modal__text"> 
+                                    In 1991, Tim Berners-Lee's World Wide Web went live. The British physicist revolutionized the way the world shares and processes information. Pictured is the world's very first webpage. We've come a long way, haven't we? 
+                                </p>
+                            </div>
+                            <footer class="modal__footer">
+                                <a href="https://www.internethalloffame.org//inductees/jcr-licklider"
+                                    class="modal__link">follow me</a>
+                            </footer>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-img"></div>
+
+            <div class="timeline-content timeline-card js--fadeInLeft">
+                <div class="timeline-img-header">
+                    <h2>The World's First Livestream</h2>
+                </div>
+                <div class="date">1993</div>
+                <p></p>
+                <a href="#modal" class="modal-trigger">More</a>
+
+                <div class="modal" id="modal">
+                    <div class="modal__dialog">
+                        <section class="modal__content">
+                            <header class="modal__header">
+                                <h2 class="modal__title">Idea of Global Network</h2>
+                                <a href="#" class="modal__close">&times;</a>
+                            </header>
+                            <div class="modal__body">
+                                <img src="https://www.internethalloffame.org/sites/default/files/inductees/jcr%20licklider.jpg"
+                                    alt="modal image" class="modal__image">
+                                <p class="modal__text">
+                                    One of the internet's first celebrities was the Trojan room coffee pot, the subject of the world's first Livestream, which went live on November 22, 1993. Yes. A coffee pot. 
+                                </p>
+                            </div>
+                            <footer class="modal__footer">
+                                <a href="https://www.internethalloffame.org//inductees/jcr-licklider"
+                                    class="modal__link">follow me</a>
+                            </footer>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-img"></div>
+
+            <div class="timeline-content timeline-card js--fadeInLeft">
+                <div class="timeline-img-header">
+                    <h2>The World Becomes Wireless</h2>
+                </div>
+                <div class="date">1997</div>
+                <p></p>
+                <a href="#modal" class="modal-trigger">More</a>
+
+                <div class="modal" id="modal">
+                    <div class="modal__dialog">
+                        <section class="modal__content">
+                            <header class="modal__header">
+                                <h2 class="modal__title">World become wireless</h2>
+                                <a href="#" class="modal__close">&times;</a>
+                            </header>
+                            <div class="modal__body">
+                                <img src="https://www.internethalloffame.org/sites/default/files/inductees/jcr%20licklider.jpg"
+                                    alt="modal image" class="modal__image">
+                                <p class="modal__text"> 
+                                    WiFi was first released to the public in 1997 and led to the development of the 802.11 committees, which evolved into IEEE802.11, referring to "a set of standards that define communication for wireless local area networks (WLANs)."
+                                </p>
+                            </div>
+                            <footer class="modal__footer">
+                                <a href="https://www.internethalloffame.org//inductees/jcr-licklider"
+                                    class="modal__link">follow me</a>
+                            </footer>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-img"></div>
+
+            <div class="timeline-content timeline-card js--fadeInLeft">
+                <div class="timeline-img-header">
+                    <h2>Card Title</h2>
+                </div>
+                <div class="date">2001</div>
+                <p></p>
+                <a href="#modal" class="modal-trigger">Wikipedia</a>
+
+                <div class="modal" id="modal">
+                    <div class="modal__dialog">
+                        <section class="modal__content">
+                            <header class="modal__header">
+                                <h2 class="modal__title">Idea of Global Network</h2>
+                                <a href="#" class="modal__close">&times;</a>
+                            </header>
+                            <div class="modal__body">
+                                <img src="https://www.internethalloffame.org/sites/default/files/inductees/jcr%20licklider.jpg"
+                                    alt="modal image" class="modal__image">
+                                <p class="modal__text">
+                                    Wikipedia is founded as a "multilingual, web-based, free-content encyclopedia", to which anyone can contribute, and which anyone can access. By 2014 the English-language version has about 4.5million entries.  
+                                </p>
+                            </div>
+                            <footer class="modal__footer">
+                                <a href="https://www.internethalloffame.org//inductees/jcr-licklider"
+                                    class="modal__link">follow me</a>
+                            </footer>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-img"></div>
+
+            <div class="timeline-content timeline-card js--fadeInLeft">
+                <div class="timeline-img-header">
+                    <h2>Google</h2>
+                </div>
+                <div class="date">2008</div>
+                <p>.</p>
+                <a href="#modal" class="modal-trigger">More</a>
+
+                <div class="modal" id="modal">
+                    <div class="modal__dialog">
+                        <section class="modal__content">
+                            <header class="modal__header">
+                                <h2 class="modal__title">Idea of Global Network</h2>
+                                <a href="#" class="modal__close">&times;</a>
+                            </header>
+                            <div class="modal__body">
+                                <img src="https://www.internethalloffame.org/sites/default/files/inductees/jcr%20licklider.jpg"
+                                    alt="modal image" class="modal__image">
+                                <p class="modal__text">
+                                    Google Chrome browser and Chrome OS
+Google releases a suite of products including a freeware browser called Chrome, and an operating system that consists of the Chrome browser plus a set of web-based applications to replace traditional, locally installed software.
+                                </p>
+                            </div>
+                            <footer class="modal__footer">
+                                <a href="https://www.internethalloffame.org//inductees/jcr-licklider"
+                                    class="modal__link">follow me</a>
+                            </footer>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+      
+
+    </section>
+
+</body>
+<script>
+    $(function () {
+        window.sr = ScrollReveal();
+
+        if ($(window).width() < 768) {
+            if ($(".timeline-content").hasClass("js--fadeInLeft")) {
+                $(".timeline-content")
+                    .removeClass("js--fadeInLeft")
+                    .addClass("js--fadeInRight");
+            }
+
+            sr.reveal(".js--fadeInRight", {
+                origin: "right",
+                distance: "300px",
+                easing: "ease-in-out",
+                duration: 800
+            });
+        } else {
+            sr.reveal(".js--fadeInLeft", {
+                origin: "left",
+                distance: "300px",
+                easing: "ease-in-out",
+                duration: 800
+            });
+
+            sr.reveal(".js--fadeInRight", {
+                origin: "right",
+                distance: "300px",
+                easing: "ease-in-out",
+                duration: 800
+            });
+        }
+
+        sr.reveal(".js--fadeInLeft", {
+            origin: "left",
+            distance: "300px",
+            easing: "ease-in-out",
+            duration: 800
+        });
+
+        sr.reveal(".js--fadeInRight", {
+            origin: "right",
+            distance: "300px",
+            easing: "ease-in-out",
+            duration: 800
+        });
+    });
+
+</script>
+
+</html>
